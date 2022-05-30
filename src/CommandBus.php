@@ -1,14 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Sauber\CommandBus;
 
-use Psr\Container\ContainerInterface;
-use Sauber\CommandBus\Contracts\DispatchContract;
-use Sauber\CommandBus\Contracts\HandlerContract;
-use Sauber\CommandBus\Exceptions\DispatchNotFound;
 use Sauber\Container\Container;
+use Psr\Container\ContainerInterface;
+use Sauber\CommandBus\Contracts\HandlerContract;
+use Sauber\CommandBus\Contracts\DispatchContract;
+use Sauber\CommandBus\Exceptions\DispatchNotFound;
 
 final class CommandBus
 {
@@ -21,7 +21,8 @@ final class CommandBus
         protected array $commands = [],
         protected array $queries = [],
         protected readonly ContainerInterface $container = new Container(),
-    ) {}
+    ) {
+    }
 
     /**
      * @param class-string<DispatchContract> $command
@@ -52,10 +53,7 @@ final class CommandBus
         $name = $event::class;
 
         if (! $this->registered(name: $name)) {
-            throw new DispatchNotFound(
-                message: "Could not dispatch [$name::class] as it has not been registered.",
-                code: 404,
-            );
+            throw new DispatchNotFound(message: "Could not dispatch [{$name}::class] as it has not been registered.", code: 404, );
         }
 
         $class = $this->commands[$name] ?? $this->queries[$name];
