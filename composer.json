@@ -1,5 +1,5 @@
 {
-    "name": "sauber-php/sauber",
+    "name": "sauber-php/command-bus",
     "description": "The Command Bus component for the Sauber PHP framework",
     "type": "library",
     "license": "MIT",
